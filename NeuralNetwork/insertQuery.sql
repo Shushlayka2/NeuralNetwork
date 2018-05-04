@@ -1,0 +1,12 @@
+insert into "Weights" values (0, 0, 0, 0);
+insert into "Weights" values (1, 0, 0, 0);
+insert into "Weights" values (2, 0, 1, 0);
+insert into "Weights" values (3, 0, 1, 0);
+insert into "Weights" values (4, 0, 2, 0);
+insert into "Weights" values (5, 0, 2, 0);
+insert into "Weights" values (6, 0, 3, 0);
+insert into "Weights" values (7, 0, 3, 0);
+insert into "Weights" values (8, 1, 0, 0);
+insert into "Weights" values (9, 1, 0, 0);
+insert into "Weights" values (10, 1, 0, 0);
+insert into "Weights" values (11, 1, 0, 0);

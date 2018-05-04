@@ -1,0 +1,11 @@
+c:\users\latypov bulat\source\repos\NeuralNetwork\NeuralNetwork\bin\Debug\netcoreapp2.0\NeuralNetwork.deps.json
+c:\users\latypov bulat\source\repos\NeuralNetwork\NeuralNetwork\bin\Debug\netcoreapp2.0\NeuralNetwork.runtimeconfig.json
+c:\users\latypov bulat\source\repos\NeuralNetwork\NeuralNetwork\bin\Debug\netcoreapp2.0\NeuralNetwork.runtimeconfig.dev.json
+c:\users\latypov bulat\source\repos\NeuralNetwork\NeuralNetwork\bin\Debug\netcoreapp2.0\NeuralNetwork.dll
+c:\users\latypov bulat\source\repos\NeuralNetwork\NeuralNetwork\obj\Debug\netcoreapp2.0\NeuralNetwork.csprojResolveAssemblyReference.cache
+c:\users\latypov bulat\source\repos\NeuralNetwork\NeuralNetwork\obj\Debug\netcoreapp2.0\NeuralNetwork.csproj.CoreCompileInputs.cache
+c:\users\latypov bulat\source\repos\NeuralNetwork\NeuralNetwork\obj\Debug\netcoreapp2.0\NeuralNetwork.AssemblyInfoInputs.cache
+c:\users\latypov bulat\source\repos\NeuralNetwork\NeuralNetwork\obj\Debug\netcoreapp2.0\NeuralNetwork.AssemblyInfo.cs
+c:\users\latypov bulat\source\repos\NeuralNetwork\NeuralNetwork\bin\Debug\netcoreapp2.0\NeuralNetwork.pdb
+c:\users\latypov bulat\source\repos\NeuralNetwork\NeuralNetwork\obj\Debug\netcoreapp2.0\NeuralNetwork.dll
+c:\users\latypov bulat\source\repos\NeuralNetwork\NeuralNetwork\obj\Debug\netcoreapp2.0\NeuralNetwork.pdb
