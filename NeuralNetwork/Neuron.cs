@@ -7,14 +7,14 @@ namespace NeuralNetwork
 	public class Neuron
 	{
 		private static int counter = 0;
-		public static void RestartCounter() => counter = 0;
+		internal static void RestartCounter() => counter = 0;
 
-		public int NeuronNum { get; }
-		public double[] Weights { get; set; }
-		public double[] Inputs { get; set; }
-		public double Output { get => Activator(Inputs, Weights); }
+		internal int NeuronNum { get; }
+		internal double[] Weights { get; set; }
+		internal double[] Inputs { get; set; }
+		internal double Output { get => Activator(Inputs, Weights); }
 
-		public Neuron()
+		internal Neuron()
 		{
 			NeuronNum = counter++;
 		}
@@ -24,10 +24,10 @@ namespace NeuralNetwork
 			double sum = 0;
 			for (int l = 0; l < i.Length; l++)
 				sum += i[l] * w[l];
+			sum += w[w.Length - 1];
 			return Math.Pow(1 + Math.Exp(-sum), -1);
 		}
 
-		public double Derivativator(double outsignal) => outsignal * (1 - outsignal);
-
+		internal double Derivativator() => Output * (1 - Output);
 	}
 }

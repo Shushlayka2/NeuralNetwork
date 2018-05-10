@@ -1,42 +1,45 @@
-﻿using System;
+﻿using NeuralNetwork.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace NeuralNetwork
 {
 	public class Trainer
 	{
-		private List<SystemData> Samples { get; set; }
-		public double[] Input { get; set; }
-		public double[] Output { get; set; }
+		private double Alpha = 0.1;
 
-		public Trainer()
+		public void SetAlpha(double alpha)
 		{
-			Samples = new List<SystemData>
+			Alpha = alpha;
+		}
+
+		public void Train(Network network, double[] input, double[] output)
+		{
+			for (int i = 0; i < 3; i++)
 			{
-				new SystemData("Windows", 4),
-				new SystemData("Windows", 1),
-				new SystemData("Windows", 16),
-				new SystemData("Ubuntu", 1),
-				new SystemData("IOS", 16),
-				new SystemData("IOS", 4)
-			};
-			Output = new double[] { 0.25, 0.5, 0, 0.5, 0, 0 };
-			Input = (from sample in Samples
-					 select CodeStrings(sample.OS)).ToArray();
+				network.Run(input);
+				for (int j = network.Layers.Count - 1; j >= 0; j--)
+				{
+					network.Layers[j].CorrectWeights(network, output, Alpha);
+				}
+			}
 		}
 
-		private double CodeStrings(string str)
+		internal void SaveWeights(Network network)
 		{
-			int[] lettersCount = new int[26];
-			str = str.ToLower();
-			return BitConverter.ToDouble(Encoding.ASCII.GetBytes(str), 0);
+			for (int i = 0; i < network.Layers.Count; i++)
+				for (int j = 0; j < network.Layers[i].Neurons.Count; j++)
+					for (int k = 0; k < network.Layers[i].Neurons[j].Weights.Length; k++)
+						using (WeightsDBContext db = new WeightsDBContext())
+						{
+							Weight weight = (from w in db.Weights
+											where w.LayerNum == i && w.NeuronNum == j
+											select w).First();
+							weight.Value = network.Layers[i].Neurons[j].Weights[k];
+							db.Weights.Update(weight);
+							db.SaveChanges();
+						}
 		}
-
-		public void Train(Network network)
-		{
-
-		}
-    }
+	}
 }

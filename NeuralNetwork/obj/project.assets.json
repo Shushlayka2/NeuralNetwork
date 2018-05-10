@@ -3230,11 +3230,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\users\\latypov bulat\\source\\repos\\NeuralNetwork\\NeuralNetwork\\NeuralNetwork.csproj",
+      "projectUniqueName": "C:\\Users\\Latypov Bulat\\source\\repos\\NeuralNetwork\\NeuralNetwork\\NeuralNetwork.csproj",
       "projectName": "NeuralNetwork",
-      "projectPath": "c:\\users\\latypov bulat\\source\\repos\\NeuralNetwork\\NeuralNetwork\\NeuralNetwork.csproj",
+      "projectPath": "C:\\Users\\Latypov Bulat\\source\\repos\\NeuralNetwork\\NeuralNetwork\\NeuralNetwork.csproj",
       "packagesPath": "C:\\Users\\Latypov Bulat\\.nuget\\packages\\",
-      "outputPath": "c:\\users\\latypov bulat\\source\\repos\\NeuralNetwork\\NeuralNetwork\\obj\\",
+      "outputPath": "C:\\Users\\Latypov Bulat\\source\\repos\\NeuralNetwork\\NeuralNetwork\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",

@@ -10,15 +10,17 @@ namespace NeuralNetwork
     {
 		private static int counter = 0;
 
-		public int LayerNum { get; }
+		internal int LayerNum { get; }
 		protected int Numofneurons;
-		public List<Neuron> Neurons { get; set; }
+		protected int Numofprevneurons;
+		internal List<Neuron> Neurons { get; set; }
 
-		public Layer(int numofneurons)
+		internal Layer(int numofneurons, int numofprevneurons)
 		{
 			Neuron.RestartCounter();
 			LayerNum = counter++;
 			Numofneurons = numofneurons;
+			Numofprevneurons = numofprevneurons;
 			Neurons = new List<Neuron>();
 
 			for (int i = 0; i < Numofneurons; i++)
@@ -37,11 +39,20 @@ namespace NeuralNetwork
 				result = (from weight in db.Weights
 						  where weight.LayerNum == layerNum && weight.NeuronNum == neuronNum
 						  select weight.Value).ToArray();
+				if (result.Length == 0)
+				{
+					for (int i = 0; i < Numofprevneurons + 1; i++)
+						db.Weights.Add(new Weight(0.1, layerNum, neuronNum));
+					db.SaveChanges();
+					return GetWeights(layerNum, neuronNum);
+				}
+					
 			}
 			return result;
 		}
 
-		abstract public void SendOutput(Network currentNetwork, Layer nextLayer);
+		abstract internal void SendOutput(Network network, Layer nextLayer);
 
+		abstract internal void CorrectWeights(Network network, double[] rightOutput, double alpha);
     }
 }
