@@ -28,7 +28,10 @@ namespace NeuralNetwork
 			byte[] bytes = Encoding.ASCII.GetBytes(str);
 			byte[] extendedBytes = new byte[128];
 			Array.Copy(bytes, extendedBytes, bytes.Length);
-			return BitConverter.ToDouble(extendedBytes, 0) * 100;
+			double result = BitConverter.ToDouble(extendedBytes, 0);
+			for (int i = 0; i < 307; i++)
+				result *= 10;
+			return result;
 		}
 	}
 }

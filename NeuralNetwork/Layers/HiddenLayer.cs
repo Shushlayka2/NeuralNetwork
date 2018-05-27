@@ -10,6 +10,16 @@ namespace NeuralNetwork
 
 		internal override void CorrectWeights(Network network, double[] rightOutput, double alpha)
 		{
+			for (int i = 0; i < Numofneurons; i++)
+			{
+				Neuron currentNeuron = Neurons[i];
+				for (int j = 0; j < currentNeuron.Weights.Length; j++)
+					if (j != currentNeuron.Weights.Length - 1)
+						currentNeuron.Weights[j] += alpha * currentNeuron.Inputs[j] * network.GrSum[i] * currentNeuron.Derivativator();
+					else
+						currentNeuron.Weights[j] += alpha * network.GrSum[i] * currentNeuron.Derivativator();
+			}
+
 			//Gradients sums
 			double[] grSum = new double[Numofprevneurons];
 			for (int i = 0; i < Numofprevneurons; i++)
@@ -19,16 +29,6 @@ namespace NeuralNetwork
 					sum += Neurons[j].Weights[i] * network.GrSum[j] * Neurons[j].Derivativator();
 				sum *= 2;
 				grSum[i] = sum;
-			}
-
-			for (int i = 0; i < Numofneurons; i++)
-			{
-				Neuron currentNeuron = Neurons[i];
-				for (int j = 0; j < currentNeuron.Weights.Length; j++)
-					if (j != currentNeuron.Weights.Length - 1)
-						currentNeuron.Weights[j] += alpha * currentNeuron.Inputs[j] * network.GrSum[i] * currentNeuron.Derivativator();
-					else
-						currentNeuron.Weights[j] += alpha * network.GrSum[i] * currentNeuron.Derivativator();
 			}
 
 			network.GrSum = grSum;

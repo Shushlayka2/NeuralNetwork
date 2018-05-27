@@ -28,7 +28,7 @@ namespace NeuralNetwork
 		static void Main(string[] args)
         {
 			InitializeCustomTrainSet();
-			Network network = new Network(new int[] { 2, 4, 1 });
+			Network network = new Network(new int[] { 2, 5, 1 });
 			Trainer trainer = new Trainer();
 			Console.WriteLine("Learning...");
 			for (int j = 0; j < 100000; j++)

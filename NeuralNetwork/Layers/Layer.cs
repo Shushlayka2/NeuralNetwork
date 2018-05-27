@@ -43,7 +43,7 @@ namespace NeuralNetwork
 				if (result.Length == 0)
 				{
 					for (int i = 0; i < Numofprevneurons + 1; i++)
-						db.Weights.Add(new Weight(0.1, layerNum, neuronNum));
+						db.Weights.Add(new Weight(rnd.NextDouble() * 2 - 1, layerNum, neuronNum));
 					db.SaveChanges();
 					return GetWeights(layerNum, neuronNum);
 				}

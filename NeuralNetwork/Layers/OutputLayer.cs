@@ -26,12 +26,7 @@ namespace NeuralNetwork
 				Neuron currentNeuron = Neurons[i];
 				for (int j = 0; j < currentNeuron.Weights.Length; j++)
 					if (j != currentNeuron.Weights.Length - 1)
-					{
-						double intermediate = alpha * 2 * currentNeuron.Inputs[j] * (rightOutput[i] - network.NetworkResult[i]) * currentNeuron.Derivativator();
-						Console.WriteLine(intermediate + 0.1);
-						currentNeuron.Weights[j] = currentNeuron.Weights[j] + intermediate;
-
-					}
+						currentNeuron.Weights[j] += alpha * 2 * currentNeuron.Inputs[j] * (rightOutput[i] - network.NetworkResult[i]) * currentNeuron.Derivativator();
 					else
 						currentNeuron.Weights[j] += alpha * 2 * (rightOutput[i] - network.NetworkResult[i]) * currentNeuron.Derivativator();
 			}
