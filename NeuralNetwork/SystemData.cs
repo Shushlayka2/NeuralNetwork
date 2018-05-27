@@ -14,5 +14,21 @@ namespace NeuralNetwork
 			OS = os;
 			RAM = ram;
 		}
-    }
+
+		public static double CodeStrings(string str)
+		{
+			//if (str == "Windows")
+			//	return 10;
+			//if (str == "Ubuntu")
+			//	return 20;
+			//if (str == "IOS")
+			//	return 30;
+			//return 0;
+			str = str.ToLower();
+			byte[] bytes = Encoding.ASCII.GetBytes(str);
+			byte[] extendedBytes = new byte[128];
+			Array.Copy(bytes, extendedBytes, bytes.Length);
+			return BitConverter.ToDouble(extendedBytes, 0) * 100;
+		}
+	}
 }

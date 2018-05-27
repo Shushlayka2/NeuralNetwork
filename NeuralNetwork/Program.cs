@@ -6,9 +6,6 @@ namespace NeuralNetwork
 {
     class Program
     {
-		static double[] inputData;
-		static double[] outputData;
-
 		static List<SystemData> TrainSetInput { get; set; }
 		static double[] TrainSetOutput { get; set; }
 
@@ -28,22 +25,6 @@ namespace NeuralNetwork
 			TrainSetOutput = new double[] { 0.25, 0.5, 0, 0.5, 0, 0, 0, 0 };
 		}
 
-		static double CodeStrings(string str)
-		{
-			if (str == "Windows")
-				return 10;
-			if (str == "Ubuntu")
-				return 20;
-			if (str == "IOS")
-				return 30;
-			return 0;
-			//str = str.ToLower();
-			//byte[] bytes = Encoding.ASCII.GetBytes(str);
-			//byte[] extendedBytes = new byte[128];
-			//Array.Copy(bytes, extendedBytes, bytes.Length);
-			//return BitConverter.ToDouble(extendedBytes, 0) * 100;
-		}
-
 		static void Main(string[] args)
         {
 			InitializeCustomTrainSet();
@@ -52,7 +33,7 @@ namespace NeuralNetwork
 			Console.WriteLine("Learning...");
 			for (int j = 0; j < 100000; j++)
 				for (int i = 0; i < TrainSetInput.Count; i++)
-					trainer.Train(network, new double[] { CodeStrings(TrainSetInput[i].OS), TrainSetInput[i].RAM }, new double[] { TrainSetOutput[i] });
+					trainer.Train(network, new double[] { SystemData.CodeStrings(TrainSetInput[i].OS), TrainSetInput[i].RAM }, new double[] { TrainSetOutput[i] });
 			trainer.SaveWeights(network);
 			Test(network);
 		}
@@ -62,7 +43,7 @@ namespace NeuralNetwork
 			while (true)
 			{
 				Console.WriteLine("Enter Os: ");
-				double osCode = CodeStrings(Console.ReadLine());
+				double osCode = SystemData.CodeStrings(Console.ReadLine());
 				Console.WriteLine("Enter RAM: ");
 				double ram = Convert.ToDouble(Console.ReadLine());
 				network.Run(new double[] { osCode, ram });

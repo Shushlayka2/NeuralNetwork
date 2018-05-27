@@ -21,11 +21,18 @@ namespace NeuralNetwork
 
 		private double Activator(double[] i, double[] w)
 		{
-			double sum = 0;
-			for (int l = 0; l < i.Length; l++)
-				sum += i[l] * w[l];
-			sum += w[w.Length - 1];
-			return Math.Pow(1 + Math.Exp(-sum), -1);
+			try
+			{
+				double sum = 0;
+				for (int l = 0; l < i.Length; l++)
+					sum += i[l] * w[l];
+				sum += w[w.Length - 1];
+				return Math.Pow(1 + Math.Exp(-sum), -1);
+			}
+			catch(Exception ex)
+			{
+				return 0;
+			}
 		}
 
 		internal double Derivativator() => Output * (1 - Output);

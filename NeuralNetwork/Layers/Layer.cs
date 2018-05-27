@@ -9,6 +9,7 @@ namespace NeuralNetwork
     public abstract class Layer
     {
 		private static int counter = 0;
+		private Random rnd = new Random(1);
 
 		internal int LayerNum { get; }
 		protected int Numofneurons;
